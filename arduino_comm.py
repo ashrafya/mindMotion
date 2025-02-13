@@ -1,13 +1,12 @@
+import pyfirmata 
 import time
-import serial
 
-def foo():
-    print("sent")
-    ardu= serial.Serial('/dev/ttyACM0',9600, timeout=.1)
+
+board = pyfirmata.Arduino('/dev/ttyACM0')
+
+
+while True:
+    board.digital[13].write(1)
     time.sleep(1)
-    ardu.write('s'.encode())
+    board.digital[13].write(0)
     time.sleep(1)
-    #ardu.close()
-
-
-foo()
